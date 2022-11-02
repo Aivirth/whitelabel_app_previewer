@@ -29,6 +29,10 @@ function Summary({}: ISummaryProps) {
         quaternary: false,
         success: false,
         danger: false,
+        bottom_menu_1: false,
+        bottom_menu_2: false,
+        bottom_menu_3: false,
+        bottom_menu_4: false,
     });
 
     const userCopiedColorAlert = useToast();
@@ -61,7 +65,7 @@ function Summary({}: ISummaryProps) {
                     <Th textAlign={'center'}>Hex</Th>
                     <Th textAlign={'center'}>RGB</Th>
                     <Th textAlign={'center'}>Preview</Th>
-                    <Th textAlign={'center'}>Copia in clipboard</Th>
+                    <Th textAlign={'center'}>Copy To Clipboard</Th>
                 </Tr>
             </Thead>
             <Tbody>

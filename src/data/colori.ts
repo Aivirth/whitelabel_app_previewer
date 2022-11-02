@@ -8,19 +8,19 @@ export type ColorOptions = {
 export const colori: Array<ColorOptions> = [
     {
         store_key: 'primary',
-        alias: 'Primario',
+        alias: 'Primary',
     },
     {
         store_key: 'primary_darkmode',
-        alias: 'Primario Light',
+        alias: 'Primary Dark Mode',
     },
     {
         store_key: 'secondary',
-        alias: 'Secondario',
+        alias: 'Secondary',
     },
     {
         store_key: 'secondary_darkmode',
-        alias: 'Secondario Light',
+        alias: 'Secondary Dark Mode',
     },
     {
         store_key: 'tertiary',
@@ -37,5 +37,21 @@ export const colori: Array<ColorOptions> = [
     {
         store_key: 'danger',
         alias: 'Errore',
+    },
+    {
+        store_key: 'bottom_menu_1',
+        alias: 'Bottom Bar Color 1',
+    },
+    {
+        store_key: 'bottom_menu_2',
+        alias: 'Bottom Bar Color 2',
+    },
+    {
+        store_key: 'bottom_menu_3',
+        alias: 'Bottom Bar Color 3',
+    },
+    {
+        store_key: 'bottom_menu_4',
+        alias: 'Bottom Bar Color 4',
     },
 ];

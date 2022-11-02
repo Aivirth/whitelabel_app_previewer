@@ -23,7 +23,13 @@ export interface IcolorsState {
     quaternary: Color;
     success: Color;
     danger: Color;
+    bottom_menu_1: Color;
+    bottom_menu_2: Color;
+    bottom_menu_3: Color;
+    bottom_menu_4: Color;
 }
+
+export type ColorAccessKey = keyof typeof initialState;
 
 const initialState: IcolorsState = {
     primary: {
@@ -57,6 +63,22 @@ const initialState: IcolorsState = {
     danger: {
         hex: '#DCDCDC',
         rgb: '220,220,220',
+    },
+    bottom_menu_1: {
+        hex: '#9F968C',
+        rgb: '159,150,140',
+    },
+    bottom_menu_2: {
+        hex: '#9F968C',
+        rgb: '159,150,140',
+    },
+    bottom_menu_3: {
+        hex: '#9F968C',
+        rgb: '159,150,140',
+    },
+    bottom_menu_4: {
+        hex: '#9F968C',
+        rgb: '159,150,140',
     },
 };
 
