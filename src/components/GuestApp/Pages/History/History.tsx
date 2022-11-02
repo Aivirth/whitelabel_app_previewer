@@ -1,5 +1,5 @@
 import { Box, Flex, Text, AspectRatio, Image } from '@chakra-ui/react';
-import { IcolorsState } from '../../../../state/reducers/colorsReducer.d';
+import { IcolorsState } from '../../../../state/reducers/colorsReducer';
 import { RiMapPinFill as AddressMarker } from 'react-icons/ri';
 
 import { IroomState } from '../../../../state/reducers/roomReducer';

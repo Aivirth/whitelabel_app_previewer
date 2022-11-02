@@ -1,28 +1,44 @@
-import { ActionType } from "../action_types/optionsModalActions";
+import { ActionType } from '../action_types/optionsModalActions';
 
-import {
-  IOptionsModalState,
-  IOptionsModalAction,
-} from "./optionsModalReducer.d";
+interface IOptionsModalCloseAction {
+    type: ActionType.OPTIONS_MODAL_OPEN;
+}
+
+interface IOptionsModalOpenAction {
+    type: ActionType.OPTIONS_MODAL_CLOSE;
+}
+
+interface IOptionsModalOpenToggle {
+    type: ActionType.OPTIONS_MODAL_TOGGLE;
+}
+
+export type IOptionsModalAction =
+    | IOptionsModalCloseAction
+    | IOptionsModalOpenAction
+    | IOptionsModalOpenToggle;
+
+export interface IOptionsModalState {
+    isOpen: boolean;
+}
 
 const initialState: IOptionsModalState = {
-  isOpen: true,
+    isOpen: true,
 };
 
 const brandReducer = (state = initialState, action: IOptionsModalAction) => {
-  switch (action.type) {
-    case ActionType.OPTIONS_MODAL_OPEN:
-      return { ...state, isOpen: true };
+    switch (action.type) {
+        case ActionType.OPTIONS_MODAL_OPEN:
+            return { ...state, isOpen: true };
 
-    case ActionType.OPTIONS_MODAL_CLOSE:
-      return { ...state, isOpen: false };
+        case ActionType.OPTIONS_MODAL_CLOSE:
+            return { ...state, isOpen: false };
 
-    case ActionType.OPTIONS_MODAL_TOGGLE:
-      return { ...state, isOpen: !state.isOpen };
+        case ActionType.OPTIONS_MODAL_TOGGLE:
+            return { ...state, isOpen: !state.isOpen };
 
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 };
 
 export default brandReducer;

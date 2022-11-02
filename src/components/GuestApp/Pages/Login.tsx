@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from '@chakra-ui/react';
 import LoginLogo from '../components/LoginLogo';
-import { IcolorsState } from '../../../state/reducers/colorsReducer.d';
+import { IcolorsState } from '../../../state/reducers/colorsReducer';
 import { loginGradientBg } from '../../../helpers';
 import bgLogin from '../../../assets/bgLogin.jpg';
 import LoginField from '../components/Login/LoginField';
