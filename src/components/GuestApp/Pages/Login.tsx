@@ -30,9 +30,9 @@ export default function Login({ brandColors, loginBgImage }: Props) {
             lineHeight="1.2"
             transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
             border="1px"
-            backgroundColor={colorPrimary.hex}
-            borderColor={colorPrimary.hex}
-            background={colorPrimary.hex}
+            backgroundColor={colorTertiary.hex}
+            borderColor={colorTertiary.hex}
+            background={colorTertiary.hex}
             textTransform={'uppercase'}
             marginTop={10}
             paddingX="25px"
@@ -41,7 +41,7 @@ export default function Login({ brandColors, loginBgImage }: Props) {
             fontSize="14px"
             fontWeight="semibold"
             color="#FFF"
-            _hover={{ bg: '#ebedf0' }}
+            _hover={{ bg: '#ebedf0', color: colorTertiary.hex }}
             _active={{
                 bg: '#dddfe2',
                 transform: 'scale(0.98)',
@@ -65,7 +65,7 @@ export default function Login({ brandColors, loginBgImage }: Props) {
             border="1px solid"
             textTransform={'uppercase'}
             backgroundColor={'transparent'}
-            borderColor={colorPrimaryDarkMode.hex}
+            borderColor={colorTertiary.hex}
             background={'transparent'}
             marginTop={5}
             paddingX="25px"
@@ -73,7 +73,7 @@ export default function Login({ brandColors, loginBgImage }: Props) {
             borderRadius="2px"
             fontSize="14px"
             fontWeight="semibold"
-            color="#FFF"
+            color={colorTertiary.hex}
             _hover={{ bg: '#ebedf0' }}
             _active={{
                 bg: '#dddfe2',

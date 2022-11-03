@@ -65,20 +65,20 @@ const initialState: IcolorsState = {
         rgb: '220,220,220',
     },
     bottom_menu_1: {
-        hex: '#9F968C',
-        rgb: '159,150,140',
+        hex: '#9572E1',
+        rgb: '150,115,225',
     },
     bottom_menu_2: {
-        hex: '#9F968C',
-        rgb: '159,150,140',
+        hex: '#FCB24D',
+        rgb: '250,180,80',
     },
     bottom_menu_3: {
-        hex: '#9F968C',
-        rgb: '159,150,140',
+        hex: '#40F74D',
+        rgb: '65,250,80',
     },
     bottom_menu_4: {
-        hex: '#9F968C',
-        rgb: '159,150,140',
+        hex: '#FD48F3',
+        rgb: '250,70,240',
     },
 };
 
