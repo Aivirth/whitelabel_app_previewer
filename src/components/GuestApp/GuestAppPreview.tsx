@@ -29,7 +29,7 @@ function GuestAppPreview({}: Props) {
                 <Login brandColors={brandColors} loginBgImage={loginBgImage} />
             </Box>
             <Box width="360px" height="740px">
-                <Overview brandColors={brandColors} />
+                <Overview brandColors={brandColors} data={roomData} />
             </Box>
             <Box width="360px" height="740px">
                 <Booking brandColors={brandColors} />

@@ -8,9 +8,11 @@ import { IoExpand as AreaIcon } from 'react-icons/io5';
 import { AiFillStar as StarIcon } from 'react-icons/ai';
 import { TiChevronRight } from 'react-icons/ti';
 import { IcolorsState } from '../../../../state/reducers/colorsReducer';
+import { IroomState } from '../../../../state/reducers/roomReducer';
 
 type Props = {
     brandColors: IcolorsState;
+    data: IroomState;
 };
 
 const Amenities = () => {
@@ -62,7 +64,7 @@ const Reviews = () => {
     );
 };
 
-function Overview({ brandColors }: Props) {
+function Overview({ brandColors, data }: Props) {
     const {
         primary: colorPrimary,
         primary_darkmode: colorPrimaryDarkMode,
@@ -72,26 +74,24 @@ function Overview({ brandColors }: Props) {
         quaternary: colorQuaternary,
     } = brandColors;
 
+    const { roomAddr, roomDesc, roomImage, roomName } = data;
+
     return (
         <Flex flexDir={'column'} position="relative" height={'100%'}>
             <Topbar title={'Apartment'} />
             <Box marginBottom={'10px'}>
-                <Image
-                    src={
-                        'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
-                    }
-                />
+                <Image src={roomImage} />
             </Box>
 
             <Box padding={'0 15px'}>
                 <Text fontWeight={'bold'} marginBottom={3}>
-                    Luxury Apartment 3
+                    {roomName}
                 </Text>
                 <Flex
                     alignItems={'center'}
                     borderBottom={`1px solid ${colorQuaternary.hex}`}
                     paddingBottom={'10px'}
-                    flexWrap="wrap"
+                    flexWrap="nowrap"
                     marginBottom={5}
                 >
                     <AddressMarker
@@ -105,8 +105,7 @@ function Overview({ brandColors }: Props) {
                         fontStyle={'italic'}
                         fontSize={'0.8rem'}
                     >
-                        <Text>Via adriatica 62, 47843</Text>
-                        <Text>Misano Adriatico (RN)</Text>
+                        <Text>{roomAddr}</Text>
                     </Box>
                 </Flex>
 
