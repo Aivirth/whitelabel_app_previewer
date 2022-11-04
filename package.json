@@ -2,7 +2,7 @@
     "name": "guestapp_builder_prototype",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://Aivirth.github.io/whitelabel_app_previewer",
+    "homepage": "https://aivirth.github.io/whitelabel_app_previewer",
     "dependencies": {
         "@chakra-ui/icons": "^2.0.11",
         "@chakra-ui/react": "^2.0.0",
