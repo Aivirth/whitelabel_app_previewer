@@ -63,6 +63,7 @@ export default function History({ brandColors, data }: Props) {
                 />
                 {cards.map((card) => (
                     <Card
+                        key={card.roomName}
                         {...card}
                         primaryAccentColor={colorPrimary.hex}
                         secondaryAccentColor={colorSecondary.hex}

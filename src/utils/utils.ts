@@ -1,44 +1,44 @@
-import { Color } from "react-color"
+import { Color } from 'react-color';
 
 export function percentage(x: number, y: number) {
-  return 100 / (y / x)
+    return 100 / (y / x);
 }
 
 export function debounce(
-  limit: number | undefined,
-  callback: (args_0: any[]) => void,
+    limit: number | undefined,
+    callback: (args_0: any[]) => void,
 ) {
-  let timeoutId: NodeJS.Timeout
-  return (...args: any[]) => {
-    if (timeoutId) {
-      clearTimeout(timeoutId)
-    }
-    timeoutId = setTimeout(callback, limit, args)
-  }
+    let timeoutId: NodeJS.Timeout;
+    return (...args: any[]) => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        timeoutId = setTimeout(callback, limit, args);
+    };
 }
 
-export function HexToRGB(hex: string){
-  if (hex.startsWith('#') && hex.length === 7) {
-    const dissected = hex.split('#')
-    const clearedHex = dissected[1]
-    const aRgbHex = clearedHex.match(/.{1,2}/g)
+export function HexToRGB(hex: string) {
+    if (hex.startsWith('#') && hex.length === 7) {
+        const dissected = hex.split('#');
+        const clearedHex = dissected[1];
+        const aRgbHex = clearedHex.match(/.{1,2}/g);
 
-    if (aRgbHex) {
-      // const aRgb = [
-      //     parseInt(aRgbHex[0], 16),
-      //     parseInt(aRgbHex[1], 16),
-      //     parseInt(aRgbHex[2], 16)
-      // ];
+        if (aRgbHex) {
+            // const aRgb = [
+            //     parseInt(aRgbHex[0], 16),
+            //     parseInt(aRgbHex[1], 16),
+            //     parseInt(aRgbHex[2], 16)
+            // ];
 
-      const aRgb = {
-        r: parseInt(aRgbHex[0], 16),
-        g: parseInt(aRgbHex[1], 16),
-        b: parseInt(aRgbHex[2], 16),
-      }
+            const aRgb = {
+                r: parseInt(aRgbHex[0], 16),
+                g: parseInt(aRgbHex[1], 16),
+                b: parseInt(aRgbHex[2], 16),
+            };
 
-      return aRgb
+            return aRgb;
+        }
     }
-  }
 
-  return false
+    return false;
 }

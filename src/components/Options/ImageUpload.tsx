@@ -19,6 +19,7 @@ interface IImageUploadProps {
     reduxStateElement?: string | null;
     reduxDispatcher?: Function;
     contrastControl?: boolean;
+    onChangeHandler?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 interface IContrastToggleProps {
@@ -142,7 +143,11 @@ function ImageUpload(props: IImageUploadProps) {
                     <Input
                         type="file"
                         name={props.inputName}
-                        onChange={handleFileInputChange}
+                        onChange={
+                            props.onChangeHandler
+                                ? props.onChangeHandler
+                                : handleFileInputChange
+                        }
                         position="absolute"
                         margin={0}
                         padding={0}

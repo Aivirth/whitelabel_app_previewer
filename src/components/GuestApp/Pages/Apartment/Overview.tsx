@@ -37,7 +37,7 @@ const Amenities = () => {
             marginBottom={3}
         >
             {amenities.map(({ text, Icon }) => (
-                <Flex alignItems={'center'}>
+                <Flex alignItems={'center'} key={text}>
                     <Box
                         background="gray.200"
                         padding="3px"

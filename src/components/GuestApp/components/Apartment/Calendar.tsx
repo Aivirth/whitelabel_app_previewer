@@ -51,7 +51,7 @@ export default function Calendar({}: ICalendar) {
                     id="book_time_from"
                     type="time"
                     name="book_time_from"
-                    value="09:30"
+                    defaultValue="09:30"
                 />
             </Box>
             <Box
@@ -77,7 +77,7 @@ export default function Calendar({}: ICalendar) {
                     id="book_time_to"
                     type="time"
                     name="book_time_to"
-                    value="20:30"
+                    defaultValue="20:30"
                 />
             </Box>
             <div className={styles.calendar__date}>
