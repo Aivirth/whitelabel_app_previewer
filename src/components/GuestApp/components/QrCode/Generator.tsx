@@ -20,7 +20,7 @@ function generateQrImageDataString({
     storeColors: IcolorsState;
     storeBrandData: IbrandState;
 }) {
-    const dataPayload = { ...storeColors, ...storeBrandData };
+    const dataPayload = { colors: storeColors, brand: storeBrandData };
     return JSON.stringify(dataPayload);
 }
 
@@ -31,7 +31,6 @@ function generateQrImage(dataString: string) {
     qrcode.setErrorCorrectionLevel(ErrorCorrectionLevel.H);
     qrcode.write(new QRByte(dataString));
     qrcode.make();
-    console.log(qrcode.toDataURL());
     return qrcode.toDataURL();
 }
 
