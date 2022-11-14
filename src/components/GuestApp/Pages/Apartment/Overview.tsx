@@ -1,4 +1,3 @@
-import React from 'react';
 import { Flex, Box, Text, Image } from '@chakra-ui/react';
 import Topbar from '../../components/shared/Topbar';
 import BottomMenu from '../../components/shared/BottomMenu';
@@ -6,7 +5,6 @@ import { RiMapPinFill as AddressMarker } from 'react-icons/ri';
 import { BiBed as BedIcon, BiBath as BathIcon } from 'react-icons/bi';
 import { IoExpand as AreaIcon } from 'react-icons/io5';
 import { AiFillStar as StarIcon } from 'react-icons/ai';
-import { TiChevronRight } from 'react-icons/ti';
 import { IcolorsState } from '../../../../state/reducers/colorsReducer';
 import { IroomState } from '../../../../state/reducers/roomReducer';
 
@@ -67,14 +65,14 @@ const Reviews = () => {
 function Overview({ brandColors, data }: Props) {
     const {
         primary: colorPrimary,
-        primary_darkmode: colorPrimaryDarkMode,
+        //primary_darkmode: colorPrimaryDarkMode,
         secondary: colorSecondary,
-        secondary_darkmode: colorSecondaryDarkMode,
-        tertiary: colorTertiary,
+        //secondary_darkmode: colorSecondaryDarkMode,
+        //tertiary: colorTertiary,
         quaternary: colorQuaternary,
     } = brandColors;
 
-    const { roomAddr, roomDesc, roomImage, roomName } = data;
+    const { roomAddr, roomImage, roomName } = data;
 
     return (
         <Flex flexDir={'column'} position="relative" height={'100%'}>
@@ -120,7 +118,6 @@ function Overview({ brandColors, data }: Props) {
 
                 {/* Book + price */}
                 <Flex
-                    //borderBottom={`1px solid ${colorQuaternary.hex}`}
                     justifyContent="space-between"
                     alignItems={'center'}
                     paddingY={5}

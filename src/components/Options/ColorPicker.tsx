@@ -2,18 +2,17 @@ import {
     Box,
     Button,
     ButtonGroup,
-    Checkbox,
     Flex,
     FormControl,
     FormLabel,
     Switch,
     Text,
 } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
-import { SketchPicker, ColorResult, RGBColor } from 'react-color';
+import { useEffect, useState } from 'react';
+import { ColorResult, RGBColor, SketchPicker } from 'react-color';
+import { v4 as uuidv4 } from 'uuid';
 import { Color } from '../../state/reducers/colorsReducer';
 import { HexToRGB } from '../../utils/utils';
-import { v4 as uuidv4 } from 'uuid';
 
 interface IColorPickerProps {
     inputName: string;

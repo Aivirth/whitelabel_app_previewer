@@ -1,5 +1,3 @@
-import { Color } from 'react-color';
-
 export function percentage(x: number, y: number) {
     return 100 / (y / x);
 }
@@ -24,12 +22,6 @@ export function HexToRGB(hex: string) {
         const aRgbHex = clearedHex.match(/.{1,2}/g);
 
         if (aRgbHex) {
-            // const aRgb = [
-            //     parseInt(aRgbHex[0], 16),
-            //     parseInt(aRgbHex[1], 16),
-            //     parseInt(aRgbHex[2], 16)
-            // ];
-
             const aRgb = {
                 r: parseInt(aRgbHex[0], 16),
                 g: parseInt(aRgbHex[1], 16),

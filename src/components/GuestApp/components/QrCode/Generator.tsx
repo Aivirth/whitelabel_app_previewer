@@ -1,17 +1,12 @@
 import { Button } from '@chakra-ui/react';
-import {
-    Encoder,
-    QRByte,
-    QRKanji,
-    ErrorCorrectionLevel,
-} from '@nuintun/qrcode';
+import { Encoder, QRByte, ErrorCorrectionLevel } from '@nuintun/qrcode';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { State } from '../../../../state/reducers';
 import { IbrandState } from '../../../../state/reducers/brandReducer';
 import { IcolorsState } from '../../../../state/reducers/colorsReducer';
 
-interface IQrGenerator {}
+//interface IQrGenerator {}
 
 function generateQrImageDataString({
     storeColors,
@@ -34,7 +29,7 @@ function generateQrImage(dataString: string) {
     return qrcode.toDataURL();
 }
 
-export default function Generator({}: IQrGenerator) {
+export default function Generator() {
     const storeColors = useSelector((state: State) => state.colors);
     const storeBrandData = useSelector((state: State) => state.brand);
     const [base64URL, setBase64URL] = useState<string | undefined>(undefined);
@@ -53,7 +48,12 @@ export default function Generator({}: IQrGenerator) {
         <div>
             <Button onClick={saveDataHandler}>Save</Button>
             {base64URL ? (
-                <img src={base64URL} width={'500px'} height={'500px'} />
+                <img
+                    src={base64URL}
+                    width={'500px'}
+                    height={'500px'}
+                    alt="test"
+                />
             ) : null}
         </div>
     );

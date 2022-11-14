@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
     Box,
     Image,
@@ -79,12 +79,12 @@ function ImageUpload(props: IImageUploadProps) {
         });
     };
 
-    const isImageUploaded = (): boolean => {
+    const isImageUploaded = useCallback((): boolean => {
         if (base64URL && base64URL !== 'default') {
             return true;
         }
         return false;
-    };
+    }, [base64URL]);
 
     useEffect(() => {
         if (!isImageUploaded()) {
@@ -101,7 +101,13 @@ function ImageUpload(props: IImageUploadProps) {
                 setContrastDark(JSON.parse(contrastSetting));
             }
         }
-    }, []);
+    }, [
+        isImageUploaded,
+        props.reduxStateElement,
+        props.inputName,
+        props.reduxDispatcher,
+        props.contrastControl,
+    ]);
 
     const handleContrastCheck = () => {
         setContrastDark(!contrastDark);

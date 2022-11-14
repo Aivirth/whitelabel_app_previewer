@@ -8,15 +8,15 @@ import Overview from './Pages/Apartment/Overview';
 import Booking from './Pages/Apartment/Booking';
 import History from './Pages/History/History';
 
-type Props = {};
+//type Props = {};
 
-function GuestAppPreview({}: Props) {
+function GuestAppPreview() {
     const store = useSelector((state: State) => state);
 
     //   console.log(store);
     const {
         colors: brandColors,
-        brand: brandData,
+        //brand: brandData,
         loginAndPin,
         room: roomData,
     } = store;

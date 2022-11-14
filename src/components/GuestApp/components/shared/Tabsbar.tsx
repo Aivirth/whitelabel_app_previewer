@@ -165,7 +165,7 @@ const KeyItem = ({ brandColors }: IKeyItemProps) => {
     );
 };
 
-export default function Tabsbar({}: Props) {
+export default function Tabsbar(_props: Props) {
     const brandColors = useSelector((state: State) => state.colors);
     return (
         <Flex position="absolute" bottom="0" left="0" width="100%">

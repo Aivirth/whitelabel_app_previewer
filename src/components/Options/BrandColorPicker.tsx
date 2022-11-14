@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import ColorPicker from './ColorPicker';
-import { Box, Flex } from '@chakra-ui/react';
-import OptionName from './Layout/OptionName';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { Flex } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { State } from '../../state/reducers/index';
+import ColorPicker from './ColorPicker';
+import OptionName from './Layout/OptionName';
 
 import { updateColor as updateColorActionCreator } from '../../state/action_creators/colorsActionCreator';
 import { IcolorsState } from '../../state/reducers/colorsReducer';

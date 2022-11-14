@@ -43,7 +43,7 @@ async function handleImageScan(base64Image: string) {
 
 function handleRestoreSettings(data: string) {}
 
-export default function Decoder({}: IQrDecoder) {
+export default function Decoder(_props: IQrDecoder) {
     const [base64URL, setBase64URL] = useState<string | undefined>(undefined);
 
     function handleInputChange(e: any) {

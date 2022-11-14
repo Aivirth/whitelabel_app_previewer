@@ -1,14 +1,16 @@
-import { Box, Flex, Text, Image } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
+import { CgMenuBoxed as MenuIcon } from 'react-icons/cg';
+import { FaChevronCircleLeft as BackIcon } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { State } from '../../../../state/reducers';
-import { FaChevronCircleLeft as BackIcon } from 'react-icons/fa';
-import { CgMenuBoxed as MenuIcon } from 'react-icons/cg';
 type Props = { title: string };
 
 function Topbar({ title }: Props) {
     const colors = useSelector((state: State) => state.colors);
-    const { primary: colorPrimary, primary_darkmode: colorPrimaryDarkMode } =
-        colors;
+    const {
+        primary: colorPrimary,
+        //primary_darkmode: colorPrimaryDarkMode
+    } = colors;
     return (
         <Flex
             background={colorPrimary.hex}

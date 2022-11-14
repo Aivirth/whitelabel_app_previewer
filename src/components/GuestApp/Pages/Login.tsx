@@ -1,9 +1,9 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
-import LoginLogo from '../components/LoginLogo';
-import { IcolorsState } from '../../../state/reducers/colorsReducer';
-import { loginGradientBg } from '../../../helpers';
+import { Box, Flex } from '@chakra-ui/react';
 import bgLogin from '../../../assets/bgLogin.jpg';
+import { loginGradientBg } from '../../../helpers';
+import { IcolorsState } from '../../../state/reducers/colorsReducer';
 import LoginField from '../components/Login/LoginField';
+import LoginLogo from '../components/LoginLogo';
 
 type Props = {
     brandColors: IcolorsState;
@@ -14,11 +14,11 @@ type Props = {
 export default function Login({ brandColors, loginBgImage }: Props) {
     const {
         primary: colorPrimary,
-        primary_darkmode: colorPrimaryDarkMode,
-        secondary: colorSecondary,
-        secondary_darkmode: colorSecondaryDarkMode,
+        //primary_darkmode: colorPrimaryDarkMode,
+        //secondary: colorSecondary,
+        //secondary_darkmode: colorSecondaryDarkMode,
         tertiary: colorTertiary,
-        quaternary: colorQuaternary,
+        //quaternary: colorQuaternary,
     } = brandColors;
 
     const defaultBgImage = bgLogin;

@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { IcolorsState } from '../../../../state/reducers/colorsReducer';
 import Calendar from '../../components/Apartment/Calendar';
 import BottomMenu from '../../components/shared/BottomMenu';
@@ -11,11 +11,11 @@ interface IBooking {
 export default function Booking({ brandColors }: IBooking) {
     const {
         primary: colorPrimary,
-        primary_darkmode: colorPrimaryDarkMode,
-        secondary: colorSecondary,
-        secondary_darkmode: colorSecondaryDarkMode,
-        tertiary: colorTertiary,
-        quaternary: colorQuaternary,
+        //primary_darkmode: colorPrimaryDarkMode,
+        //secondary: colorSecondary,
+        //secondary_darkmode: colorSecondaryDarkMode,
+        //tertiary: colorTertiary,
+        //quaternary: colorQuaternary,
     } = brandColors;
 
     return (

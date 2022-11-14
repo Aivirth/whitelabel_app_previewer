@@ -1,6 +1,5 @@
-import { Box, Flex, Text, AspectRatio, Image } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { IcolorsState } from '../../../../state/reducers/colorsReducer';
-import { RiMapPinFill as AddressMarker } from 'react-icons/ri';
 
 import { IroomState } from '../../../../state/reducers/roomReducer';
 import Topbar from '../../components/shared/Topbar';
@@ -37,14 +36,14 @@ const cards = [
 export default function History({ brandColors, data }: Props) {
     const {
         primary: colorPrimary,
-        primary_darkmode: colorPrimaryDarkMode,
+        //primary_darkmode: colorPrimaryDarkMode,
         secondary: colorSecondary,
-        secondary_darkmode: colorSecondaryDarkMode,
-        tertiary: colorTertiary,
-        quaternary: colorQuaternary,
+        //secondary_darkmode: colorSecondaryDarkMode,
+        //tertiary: colorTertiary,
+        //quaternary: colorQuaternary,
     } = brandColors;
 
-    const { roomName, roomAddr, roomDesc, roomImage } = data;
+    const { roomName, roomAddr, roomImage } = data;
 
     return (
         <Box>

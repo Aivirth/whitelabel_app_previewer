@@ -1,5 +1,5 @@
 {
-    "name": "guestapp_builder_prototype",
+    "name": "whitelabel_previewer",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

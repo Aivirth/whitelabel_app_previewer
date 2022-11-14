@@ -1,7 +1,7 @@
 import { Box, Input, Text } from '@chakra-ui/react';
 import styles from './Calendar.module.css';
 
-interface ICalendar {}
+//interface ICalendar {}
 
 function range(start: number, end: number) {
     return Array.from({ length: end - start + 1 }, (_, i) => i);
@@ -25,7 +25,7 @@ const Days: Function = (): JSX.Element[] => {
     ));
 };
 
-export default function Calendar({}: ICalendar) {
+export default function Calendar() {
     return (
         <Box className={styles.calendar} boxShadow="lg">
             <Box

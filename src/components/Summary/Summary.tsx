@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     Table,
     Thead,
@@ -18,9 +18,9 @@ import { BsClipboardPlus, BsClipboardCheck } from 'react-icons/bs';
 import { IcolorsState } from '../../state/reducers/colorsReducer';
 import Generator from '../GuestApp/components/QrCode/Generator';
 
-interface ISummaryProps {}
+//interface ISummaryProps {}
 
-function Summary({}: ISummaryProps) {
+function Summary() {
     const [isColorCopied, setIsColorCopied] = useState({
         primary: false,
         primary_darkmode: false,

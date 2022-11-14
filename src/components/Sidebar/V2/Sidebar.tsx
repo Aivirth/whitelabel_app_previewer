@@ -1,32 +1,22 @@
-import {
-    Box,
-    Button,
-    Divider,
-    Flex,
-    Icon,
-    IconButton,
-    Image,
-    Text,
-} from '@chakra-ui/react';
+import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import {
     BiArrowFromLeft as EnlargeIcon,
     BiArrowFromRight as ShrinkIcon,
 } from 'react-icons/bi';
-import { FiHome, FiMenu } from 'react-icons/fi';
-import {
-    MdOutlineBedroomParent,
-    MdOutlineAppSettingsAlt,
-} from 'react-icons/md';
+import { FiHome } from 'react-icons/fi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
-import { BiBuildingHouse } from 'react-icons/bi';
+import {
+    MdOutlineAppSettingsAlt,
+    MdOutlineBedroomParent,
+} from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import SummaryModalBtn from '../SummaryModalBtn';
 //import { ReactComponent as LogoSmall } from '../../../../assets/icons/logo_simple.svg';
 //import { ReactComponent as LogoFull } from '../../../../assets/icons/logo_full.svg';
 
-import logoSmall from '../../../assets/icons/logo_simple.svg';
 import logoLarge from '../../../assets/icons/logo_full.svg';
+import logoSmall from '../../../assets/icons/logo_simple.svg';
 
 import NavItem from './NavItem';
 interface ISidebarProps {}

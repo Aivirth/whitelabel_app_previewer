@@ -4,13 +4,13 @@ import {
 } from 'react-icons/fa';
 import { AiOutlineCalendar as CalendarIcon } from 'react-icons/ai';
 import { BiHelpCircle as HelpIcon } from 'react-icons/bi';
-import { Center, Text, Stack, Flex, Box } from '@chakra-ui/react';
+import { Center, Box } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { useSelector } from 'react-redux';
 import { State } from '../../../../state/reducers';
 import { ColorAccessKey } from '../../../../state/reducers/colorsReducer';
 
-interface IBottomMenu {}
+//interface IBottomMenu {}
 type MenuItem = {
     Icon: IconType;
     name: string;
@@ -35,7 +35,7 @@ const menuItems: MenuItem[] = [
     },
 ];
 
-export default function BottomMenu({}: IBottomMenu) {
+export default function BottomMenu() {
     const colors = useSelector((state: State) => state.colors);
     return (
         <Box

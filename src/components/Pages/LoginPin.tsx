@@ -1,10 +1,8 @@
-import React from 'react';
 import LoginBgImageUpload from '../Options/LoginBgImageUpload';
-import PinBgImageUpload from '../Options/PinBgImageUpload';
 
-type ILoginPinProps = {};
+//type ILoginPinProps = {};
 
-export default function LoginPin({}: ILoginPinProps) {
+export default function LoginPin(): JSX.Element {
     return (
         <>
             <LoginBgImageUpload />
