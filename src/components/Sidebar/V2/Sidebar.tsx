@@ -11,6 +11,8 @@ import {
     MdOutlineBedroomParent,
 } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import { FiSettings as SettingsIcon } from 'react-icons/fi';
+
 import SummaryModalBtn from '../SummaryModalBtn';
 //import { ReactComponent as LogoSmall } from '../../../../assets/icons/logo_simple.svg';
 //import { ReactComponent as LogoFull } from '../../../../assets/icons/logo_full.svg';
@@ -23,7 +25,7 @@ interface ISidebarProps {}
 
 const navItemsList = [
     {
-        title: 'Istruzioni',
+        title: 'Instructions',
         icon: FiHome,
         isActive: true,
         uri: '/',
@@ -51,6 +53,12 @@ const navItemsList = [
         icon: MdOutlineBedroomParent,
         isActive: false,
         uri: '/preview-room',
+    },
+    {
+        title: 'Settings',
+        icon: SettingsIcon,
+        isActive: false,
+        uri: '/settings',
     },
 ];
 

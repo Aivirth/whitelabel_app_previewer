@@ -9,6 +9,7 @@ import Colori from '../Pages/Colori';
 import Home from '../Pages/Home';
 import LoginPin from '../Pages/LoginPin';
 import PreviewCamera from '../Pages/PreviewCamera';
+import Settings from '../Pages/Settings';
 export interface IBaseProps {
     children?: React.ReactNode;
 }
@@ -16,6 +17,7 @@ export interface IBaseProps {
 const drawerPages = (
     <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/colors" element={<Colori />} />
         <Route path="/brand" element={<PageBrand />} />
         <Route path="/preview-room" element={<PreviewCamera />} />

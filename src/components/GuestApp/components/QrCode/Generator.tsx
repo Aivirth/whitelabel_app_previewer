@@ -1,6 +1,6 @@
-import { Button } from '@chakra-ui/react';
-import { Encoder, QRByte, ErrorCorrectionLevel } from '@nuintun/qrcode';
-import { useEffect, useState } from 'react';
+import { Box, Button, Image, Text } from '@chakra-ui/react';
+import { Encoder, ErrorCorrectionLevel, QRByte } from '@nuintun/qrcode';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { State } from '../../../../state/reducers';
 import { IbrandState } from '../../../../state/reducers/brandReducer';
@@ -43,18 +43,30 @@ export default function Generator() {
         setBase64URL(generateQrImage(dataString));
     };
 
-    useEffect(() => {}, []);
+    //useEffect(() => {}, []);
     return (
-        <div>
-            <Button onClick={saveDataHandler}>Save</Button>
-            {base64URL ? (
-                <img
-                    src={base64URL}
-                    width={'500px'}
-                    height={'500px'}
-                    alt="test"
-                />
-            ) : null}
-        </div>
+        <Box>
+            <Text marginBottom={4}>
+                Generate a QrCode which will contain all the necessary data to
+                restore colors and same informations previously inserted in the
+                application
+            </Text>
+            <Box marginBottom={6} textAlign="center">
+                <Button onClick={saveDataHandler}>Generate QrCode</Button>
+            </Box>
+            <Box height={'400px'} width={'100%'}>
+                {base64URL ? (
+                    <Image
+                        src={base64URL}
+                        width={'400px'}
+                        height={'400px'}
+                        display={'block'}
+                        marginX={'auto'}
+                        alt="qrcode_backup"
+                        title="qrcode_backup"
+                    />
+                ) : null}
+            </Box>
+        </Box>
     );
 }

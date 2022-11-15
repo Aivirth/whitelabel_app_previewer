@@ -1,4 +1,4 @@
-import { Flex, Input, Image, Text } from '@chakra-ui/react';
+import { Flex, Input, Image, Text, Box } from '@chakra-ui/react';
 import { Decoder as QrDecoder } from '@nuintun/qrcode';
 import { useState } from 'react';
 import { AiOutlineUpload } from 'react-icons/ai';
@@ -64,7 +64,7 @@ export default function Decoder(_props: IQrDecoder) {
         return false;
     };
     return (
-        <div>
+        <Box width={'300px'} height="300px" position="relative">
             <Input
                 type="file"
                 name={'qrcode_decode'}
@@ -97,6 +97,6 @@ export default function Decoder(_props: IQrDecoder) {
                     </Text>
                 </Flex>
             )}
-        </div>
+        </Box>
     );
 }
