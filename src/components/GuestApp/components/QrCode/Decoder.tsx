@@ -2,6 +2,9 @@ import { Flex, Input, Image, Text, Box } from '@chakra-ui/react';
 import { Decoder as QrDecoder } from '@nuintun/qrcode';
 import { useState } from 'react';
 import { AiOutlineUpload } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { State } from '../../../../state/reducers';
 import {
     IcolorsState,
     requiredColorProperties,
@@ -81,6 +84,14 @@ function handleRestoreSettings(data: string) {
 
 export default function Decoder(_props: IQrDecoder) {
     const [base64URL, setBase64URL] = useState<string | undefined>(undefined);
+    const dispatch = useDispatch();
+    const storeColors = useSelector((state: State) => state.colors);
+    const storeBrandName = useSelector((state: State) => state.brand.brandName);
+
+    /*const updateRoomAddr = bindActionCreators(
+        updateRoomAddrActionCreator,
+        dispatch,
+    );*/
 
     function handleInputChange(e: any) {
         const uploadedImage = e.target.files[0];
