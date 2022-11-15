@@ -82,6 +82,8 @@ const initialState: IcolorsState = {
     },
 };
 
+export const requiredColorProperties = Object.keys(initialState);
+
 const colorsReducer = (state = initialState, action: IColorChangeAction) => {
     switch (action.type) {
         case ActionType.UPDATE_COLOR:

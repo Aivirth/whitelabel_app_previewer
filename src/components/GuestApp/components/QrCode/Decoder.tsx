@@ -2,6 +2,10 @@ import { Flex, Input, Image, Text, Box } from '@chakra-ui/react';
 import { Decoder as QrDecoder } from '@nuintun/qrcode';
 import { useState } from 'react';
 import { AiOutlineUpload } from 'react-icons/ai';
+import {
+    IcolorsState,
+    requiredColorProperties,
+} from '../../../../state/reducers/colorsReducer';
 
 interface IQrDecoder {}
 
@@ -33,7 +37,7 @@ async function handleImageScan(base64Image: string) {
     try {
         const result = await qrCode.scan(base64Image);
         if (result.data) {
-            console.log(result.data);
+            //console.log(result.data);
             handleRestoreSettings(result.data);
         }
     } catch (error) {
@@ -41,7 +45,39 @@ async function handleImageScan(base64Image: string) {
     }
 }
 
-function handleRestoreSettings(data: string) {}
+function loadSettingsFromImage(colors: IcolorsState, brandName: string) {
+    console.log(colors);
+    console.log(brandName);
+}
+
+function handleRestoreSettings(data: string) {
+    const parsedSettingsFromQrCode = JSON.parse(data);
+    const { colors, brandName }: { colors: IcolorsState; brandName: string } =
+        parsedSettingsFromQrCode;
+
+    if (!requiredColorProperties.every((color) => color in colors)) {
+        //handle restore error
+        throw new Error(
+            'Required properties not met with match in colors parsed object from QRcode image',
+        );
+    }
+    // Check if colors have hex and rgb key
+    for (const colorKeys in colors) {
+        if (
+            !['hex', 'rgb'].every(
+                (colorFormat) =>
+                    colorFormat in colors[colorKeys as keyof typeof colors],
+            )
+        ) {
+            //handle restore error
+            throw new Error(
+                'Required properties hex and rgb not met within color object',
+            );
+        }
+    }
+
+    loadSettingsFromImage(colors, brandName);
+}
 
 export default function Decoder(_props: IQrDecoder) {
     const [base64URL, setBase64URL] = useState<string | undefined>(undefined);
@@ -63,6 +99,7 @@ export default function Decoder(_props: IQrDecoder) {
         }
         return false;
     };
+
     return (
         <Box width={'300px'} height="300px" position="relative">
             <Input

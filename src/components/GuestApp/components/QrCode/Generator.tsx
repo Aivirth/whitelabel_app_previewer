@@ -15,7 +15,10 @@ function generateQrImageDataString({
     storeColors: IcolorsState;
     storeBrandData: IbrandState;
 }) {
-    const dataPayload = { colors: storeColors, brand: storeBrandData };
+    const dataPayload = {
+        colors: storeColors,
+        brandName: storeBrandData.brandName,
+    };
     return JSON.stringify(dataPayload);
 }
 
