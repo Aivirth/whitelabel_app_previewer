@@ -41,7 +41,7 @@ const ContrastToggle = ({
             justifyContent={'center'}
         >
             <FormLabel htmlFor="contrast-randomtodo" mb="0">
-                Abilita contrasto ?
+                Enable contrast ?
             </FormLabel>
             <Switch
                 id="contrast-randomtodo"
