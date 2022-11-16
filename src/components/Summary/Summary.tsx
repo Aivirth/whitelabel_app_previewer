@@ -49,7 +49,7 @@ function Summary() {
 
         const colorAlias = colori.find((colore) => colore.store_key === color);
         userCopiedColorAlert({
-            description: `Colore ${colorAlias?.alias} copiato`,
+            description: `Color ${colorAlias?.alias} copied`,
             status: 'success',
             duration: 1150,
             isClosable: true,
