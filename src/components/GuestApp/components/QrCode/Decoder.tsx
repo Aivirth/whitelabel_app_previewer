@@ -1,7 +1,13 @@
 import { Flex, Input, Image, Text, Box } from '@chakra-ui/react';
 import { Decoder as QrDecoder } from '@nuintun/qrcode';
 import { useState } from 'react';
-import { AiOutlineUpload } from 'react-icons/ai';
+import {
+    AiFillCheckSquare as SuccessIcon,
+    AiOutlineLoading3Quarters as LoadingIcon,
+    AiOutlineQrcode as QrCodeIcon,
+} from 'react-icons/ai';
+import { BiErrorAlt as ErrorIcon } from 'react-icons/bi';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { settingsColorsRestore as settingsColorsRestoreAction } from '../../../../state/action_creators/colorsActionCreator';
@@ -13,9 +19,6 @@ import {
 } from '../../../../state/reducers/colorsReducer';
 
 interface IQrDecoder {}
-type SettingsRestoreAction = (
-    oldColors: IcolorsState,
-) => (dispatch: Dispatch<ISettingsColorsRestoreAction>) => void;
 
 const getBase64 = (file: Blob) => {
     return new Promise<string | ArrayBuffer | null>((resolve, reject) => {
@@ -76,8 +79,8 @@ export default function Decoder(_props: IQrDecoder) {
     >('idle');
     const [errors, setErrors] = useState<[]>([]);
     const dispatch = useDispatch();
-    const storeColors = useSelector((state: State) => state.colors);
-    const storeBrandName = useSelector((state: State) => state.brand.brandName);
+    //const storeColors = useSelector((state: State) => state.colors);
+    //const storeBrandName = useSelector((state: State) => state.brand.brandName);
 
     const settingsColorsRestore = bindActionCreators(
         settingsColorsRestoreAction,
@@ -131,39 +134,57 @@ export default function Decoder(_props: IQrDecoder) {
     };
 
     return (
-        <Box width={'300px'} height="300px" position="relative">
-            <Input
-                type="file"
-                name={'qrcode_decode'}
-                onChange={handleInputChange}
-                position="absolute"
-                margin={0}
-                padding={0}
-                width={'100%'}
-                height={'100%'}
-                outline={'none'}
-                opacity={0}
-                top={0}
-                left={0}
-            />
-            {isImageUploaded() ? (
-                <Image src={base64URL} margin="0 auto" objectFit={'contain'} />
-            ) : (
-                <Flex
-                    flexDir={'column'}
-                    alignItems="center"
-                    justifyContent={'center'}
-                >
-                    <AiOutlineUpload fontSize={'50px'} />
-                    <Text
-                        textAlign={'center'}
-                        alignSelf={'center'}
-                        marginTop={3}
+        <Box>
+            <Box
+                width={'300px'}
+                height="300px"
+                position="relative"
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent="center"
+                marginX="auto"
+                marginBottom={5}
+            >
+                <Input
+                    type="file"
+                    name={'qrcode_decode'}
+                    onChange={handleInputChange}
+                    position="absolute"
+                    margin={0}
+                    padding={0}
+                    width={'100%'}
+                    height={'100%'}
+                    outline={'none'}
+                    opacity={0}
+                    top={0}
+                    left={0}
+                />
+                {isImageUploaded() ? (
+                    <Image
+                        src={base64URL}
+                        margin="0 auto"
+                        objectFit={'contain'}
+                    />
+                ) : (
+                    <Flex
+                        flexDir={'column'}
+                        alignItems="center"
+                        justifyContent={'center'}
                     >
-                        Drag or click on this box
-                    </Text>
-                </Flex>
-            )}
+                        <QrCodeIcon fontSize={'50px'} />
+                        <Text
+                            textAlign={'center'}
+                            alignSelf={'center'}
+                            marginTop={3}
+                        >
+                            Drag or click on this box
+                        </Text>
+                    </Flex>
+                )}
+            </Box>
+            {restoreStatus === 'pending' ? <Box>loading...</Box> : null}
+            {restoreStatus === 'success' ? <Box>success</Box> : null}
+            {restoreStatus === 'failed' ? <Box>Failed</Box> : null}
         </Box>
     );
 }
