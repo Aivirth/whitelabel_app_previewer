@@ -14,6 +14,15 @@ export interface IColorChangeAction {
     };
 }
 
+export interface ISettingsColorsRestoreAction {
+    type:
+        | ActionType.SETTINGS_COLORS_RESTORE_INIT
+        | ActionType.SETTINGS_COLORS_RESTORE_PENDING
+        | ActionType.SETTINGS_COLORS_RESTORE_SUCCESS
+        | ActionType.SETTINGS_COLORS_RESTORE_FAIL;
+    payload: { oldColors: IcolorsState };
+}
+
 export interface IcolorsState {
     primary: Color;
     primary_darkmode: Color;
@@ -84,10 +93,12 @@ const initialState: IcolorsState = {
 
 export const requiredColorProperties = Object.keys(initialState);
 
-const colorsReducer = (state = initialState, action: IColorChangeAction) => {
+const colorsReducer = (
+    state = initialState,
+    action: IColorChangeAction | ISettingsColorsRestoreAction,
+) => {
     switch (action.type) {
         case ActionType.UPDATE_COLOR:
-            //   console.log(action);
             const updatedColorValues = {
                 hex: action.payload.hex,
                 rgb: action.payload.rgb,
@@ -95,9 +106,11 @@ const colorsReducer = (state = initialState, action: IColorChangeAction) => {
             const colorToUpdate = {
                 [action.payload.color]: updatedColorValues,
             };
-
-            //   console.log({ updatedColorValues });
             return { ...state, ...colorToUpdate };
+
+        case ActionType.SETTINGS_COLORS_RESTORE_SUCCESS:
+            const oldColors = action.payload.oldColors;
+            return { ...state, ...oldColors };
 
         default:
             return state;

@@ -3,14 +3,19 @@ import { Decoder as QrDecoder } from '@nuintun/qrcode';
 import { useState } from 'react';
 import { AiOutlineUpload } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { settingsColorsRestore as settingsColorsRestoreAction } from '../../../../state/action_creators/colorsActionCreator';
 import { State } from '../../../../state/reducers';
 import {
     IcolorsState,
+    ISettingsColorsRestoreAction,
     requiredColorProperties,
 } from '../../../../state/reducers/colorsReducer';
 
 interface IQrDecoder {}
+type SettingsRestoreAction = (
+    oldColors: IcolorsState,
+) => (dispatch: Dispatch<ISettingsColorsRestoreAction>) => void;
 
 const getBase64 = (file: Blob) => {
     return new Promise<string | ArrayBuffer | null>((resolve, reject) => {
@@ -24,38 +29,20 @@ const getBase64 = (file: Blob) => {
 
 async function handleImageScan(base64Image: string) {
     const qrCode = new QrDecoder();
-
-    /*
-    qrCode
-    ?.scan(base64Image)
-    ?.then((result) => {
-        console.log(result.data);
-        handleRestoreSettings(result.data);
-    })
-    .catch((error) => {
-        console.error(error);
-    });
-    */
-
     try {
         const result = await qrCode.scan(base64Image);
         if (result.data) {
             //console.log(result.data);
-            handleRestoreSettings(result.data);
+            return result.data;
         }
     } catch (error) {
         console.log(error);
     }
 }
 
-function loadSettingsFromImage(colors: IcolorsState, brandName: string) {
-    console.log(colors);
-    console.log(brandName);
-}
-
-function handleRestoreSettings(data: string) {
+function checkAndParseQrCodePayload(data: string) {
     const parsedSettingsFromQrCode = JSON.parse(data);
-    const { colors, brandName }: { colors: IcolorsState; brandName: string } =
+    const { colors }: { colors: IcolorsState; brandName: string } =
         parsedSettingsFromQrCode;
 
     if (!requiredColorProperties.every((color) => color in colors)) {
@@ -79,27 +66,59 @@ function handleRestoreSettings(data: string) {
         }
     }
 
-    loadSettingsFromImage(colors, brandName);
+    return parsedSettingsFromQrCode;
 }
 
 export default function Decoder(_props: IQrDecoder) {
     const [base64URL, setBase64URL] = useState<string | undefined>(undefined);
+    const [restoreStatus, setRestoreStatus] = useState<
+        string | 'idle' | 'executing' | 'failed' | 'success'
+    >('idle');
+    const [errors, setErrors] = useState<[]>([]);
     const dispatch = useDispatch();
     const storeColors = useSelector((state: State) => state.colors);
     const storeBrandName = useSelector((state: State) => state.brand.brandName);
 
-    /*const updateRoomAddr = bindActionCreators(
-        updateRoomAddrActionCreator,
+    const settingsColorsRestore = bindActionCreators(
+        settingsColorsRestoreAction,
         dispatch,
-    );*/
+    );
+
+    function loadSettingsFromImage({
+        colors,
+        brandName,
+    }: {
+        colors: IcolorsState;
+        brandName: string;
+    }) {
+        setRestoreStatus('pending');
+        try {
+            settingsColorsRestore(colors);
+            setRestoreStatus('success');
+        } catch (error) {
+            setRestoreStatus('failed');
+        }
+    }
 
     function handleInputChange(e: any) {
         const uploadedImage = e.target.files[0];
 
-        getBase64(uploadedImage).then((base64Image) => {
+        getBase64(uploadedImage).then(async (base64Image) => {
             if (typeof base64Image === 'string') {
                 setBase64URL(base64Image);
-                handleImageScan(base64Image);
+                const qrRawData = await handleImageScan(base64Image);
+                if (typeof qrRawData === 'string') {
+                    try {
+                        const {
+                            colors,
+                            brandName,
+                        }: { colors: IcolorsState; brandName: string } =
+                            checkAndParseQrCodePayload(qrRawData);
+                        loadSettingsFromImage({ colors, brandName });
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }
             }
         });
     }
