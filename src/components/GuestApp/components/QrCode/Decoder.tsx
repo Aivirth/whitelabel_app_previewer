@@ -1,22 +1,17 @@
-import { Flex, Input, Image, Text, Box } from '@chakra-ui/react';
+import { Box, Flex, Image, Input, Text } from '@chakra-ui/react';
 import { Decoder as QrDecoder } from '@nuintun/qrcode';
 import { useState } from 'react';
-import {
-    AiFillCheckSquare as SuccessIcon,
-    AiOutlineLoading3Quarters as LoadingIcon,
-    AiOutlineQrcode as QrCodeIcon,
-} from 'react-icons/ai';
-import { BiErrorAlt as ErrorIcon } from 'react-icons/bi';
+import { AiOutlineQrcode as QrCodeIcon } from 'react-icons/ai';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { settingsColorsRestore as settingsColorsRestoreAction } from '../../../../state/action_creators/colorsActionCreator';
-import { State } from '../../../../state/reducers';
 import {
     IcolorsState,
-    ISettingsColorsRestoreAction,
     requiredColorProperties,
 } from '../../../../state/reducers/colorsReducer';
+import { getErrorMessage } from '../../../../utils/utils';
+import Alert from '../../../Layout/Alert';
 
 interface IQrDecoder {}
 
@@ -29,19 +24,6 @@ const getBase64 = (file: Blob) => {
         reader.onerror = (error) => reject(error);
     });
 };
-
-async function handleImageScan(base64Image: string) {
-    const qrCode = new QrDecoder();
-    try {
-        const result = await qrCode.scan(base64Image);
-        if (result.data) {
-            //console.log(result.data);
-            return result.data;
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
 
 function checkAndParseQrCodePayload(data: string) {
     const parsedSettingsFromQrCode = JSON.parse(data);
@@ -77,15 +59,26 @@ export default function Decoder(_props: IQrDecoder) {
     const [restoreStatus, setRestoreStatus] = useState<
         string | 'idle' | 'executing' | 'failed' | 'success'
     >('idle');
-    const [errors, setErrors] = useState<[]>([]);
+    const [errors, setErrors] = useState<string[]>([]);
     const dispatch = useDispatch();
-    //const storeColors = useSelector((state: State) => state.colors);
-    //const storeBrandName = useSelector((state: State) => state.brand.brandName);
-
     const settingsColorsRestore = bindActionCreators(
         settingsColorsRestoreAction,
         dispatch,
     );
+
+    async function handleImageScan(base64Image: string) {
+        const qrCode = new QrDecoder();
+        try {
+            const result = await qrCode.scan(base64Image);
+            if (result.data) {
+                return result.data;
+            }
+        } catch (error) {
+            const errMsg = getErrorMessage(error);
+            setErrors([...errors, errMsg]);
+            setRestoreStatus('failed');
+        }
+    }
 
     function loadSettingsFromImage({
         colors,
@@ -100,6 +93,8 @@ export default function Decoder(_props: IQrDecoder) {
             setRestoreStatus('success');
         } catch (error) {
             setRestoreStatus('failed');
+            const errMsg = getErrorMessage(error);
+            setErrors([...errors, errMsg]);
         }
     }
 
@@ -108,9 +103,9 @@ export default function Decoder(_props: IQrDecoder) {
 
         getBase64(uploadedImage).then(async (base64Image) => {
             if (typeof base64Image === 'string') {
-                setBase64URL(base64Image);
                 const qrRawData = await handleImageScan(base64Image);
                 if (typeof qrRawData === 'string') {
+                    setBase64URL(base64Image);
                     try {
                         const {
                             colors,
@@ -119,7 +114,8 @@ export default function Decoder(_props: IQrDecoder) {
                             checkAndParseQrCodePayload(qrRawData);
                         loadSettingsFromImage({ colors, brandName });
                     } catch (error) {
-                        console.log(error);
+                        const errMsg = getErrorMessage(error);
+                        setErrors([...errors, errMsg]);
                     }
                 }
             }
@@ -131,6 +127,19 @@ export default function Decoder(_props: IQrDecoder) {
             return true;
         }
         return false;
+    };
+
+    const ErrorAlerts = () => {
+        let output = null;
+        if (restoreStatus === 'failed') {
+            output = <Alert status="error" descr={'An error has occured'} />;
+        }
+        if (errors.length > 0 && restoreStatus === 'failed') {
+            output = errors.map((error, index) => (
+                <Alert status="error" key={error + index} descr={error} />
+            ));
+        }
+        return <Box>{output}</Box>;
     };
 
     return (
@@ -183,8 +192,10 @@ export default function Decoder(_props: IQrDecoder) {
                 )}
             </Box>
             {restoreStatus === 'pending' ? <Box>loading...</Box> : null}
-            {restoreStatus === 'success' ? <Box>success</Box> : null}
-            {restoreStatus === 'failed' ? <Box>Failed</Box> : null}
+            {restoreStatus === 'success' ? (
+                <Alert descr="Settings restored correctly" status="success" />
+            ) : null}
+            <ErrorAlerts />
         </Box>
     );
 }
