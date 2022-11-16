@@ -5,6 +5,7 @@ import { AiOutlineQrcode as QrCodeIcon } from 'react-icons/ai';
 
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { updateBrandName } from '../../../../state/action_creators/brandActionCreator';
 import { settingsColorsRestore as settingsColorsRestoreAction } from '../../../../state/action_creators/colorsActionCreator';
 import {
     IcolorsState,
@@ -65,6 +66,10 @@ export default function Decoder(_props: IQrDecoder) {
         settingsColorsRestoreAction,
         dispatch,
     );
+    const settingsBrandnameRestore = bindActionCreators(
+        updateBrandName,
+        dispatch,
+    );
 
     async function handleImageScan(base64Image: string) {
         const qrCode = new QrDecoder();
@@ -87,10 +92,11 @@ export default function Decoder(_props: IQrDecoder) {
         colors: IcolorsState;
         brandName: string;
     }) {
-        setRestoreStatus('pending');
         try {
             settingsColorsRestore(colors);
+            settingsBrandnameRestore(brandName);
             setRestoreStatus('success');
+            setErrors([]);
         } catch (error) {
             setRestoreStatus('failed');
             const errMsg = getErrorMessage(error);
@@ -102,6 +108,7 @@ export default function Decoder(_props: IQrDecoder) {
         const uploadedImage = e.target.files[0];
 
         getBase64(uploadedImage).then(async (base64Image) => {
+            setRestoreStatus('pending');
             if (typeof base64Image === 'string') {
                 const qrRawData = await handleImageScan(base64Image);
                 if (typeof qrRawData === 'string') {
@@ -191,7 +198,13 @@ export default function Decoder(_props: IQrDecoder) {
                     </Flex>
                 )}
             </Box>
-            {restoreStatus === 'pending' ? <Box>loading...</Box> : null}
+            {restoreStatus === 'pending' ? (
+                <Alert
+                    variant="left-accent"
+                    status="info"
+                    descr={'Loading settings...'}
+                />
+            ) : null}
             {restoreStatus === 'success' ? (
                 <Alert descr="Settings restored correctly" status="success" />
             ) : null}
