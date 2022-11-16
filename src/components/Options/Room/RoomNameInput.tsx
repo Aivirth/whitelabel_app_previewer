@@ -37,7 +37,7 @@ export default function RoomNameInput(_props: IRoomNameInputProps) {
             handleChange={handleChange}
             error={error}
             inputName={'roomName'}
-            optionName={'Nome Camera'}
+            optionName={'Room Name'}
             isInvalid={isInvalid}
             text={text}
         />

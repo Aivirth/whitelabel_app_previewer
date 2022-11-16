@@ -1,21 +1,28 @@
-import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
+import {
+    Box,
+    Flex,
+    Icon,
+    IconButton,
+    Image,
+    Link,
+    Text,
+} from '@chakra-ui/react';
 import { useState } from 'react';
 import {
     BiArrowFromLeft as EnlargeIcon,
     BiArrowFromRight as ShrinkIcon,
 } from 'react-icons/bi';
-import { FiHome } from 'react-icons/fi';
+import { FiHome, FiSettings as SettingsIcon } from 'react-icons/fi';
 import { IoColorPaletteOutline } from 'react-icons/io5';
 import {
     MdOutlineAppSettingsAlt,
     MdOutlineBedroomParent,
 } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import { FiSettings as SettingsIcon } from 'react-icons/fi';
 
 import SummaryModalBtn from '../SummaryModalBtn';
-//import { ReactComponent as LogoSmall } from '../../../../assets/icons/logo_simple.svg';
-//import { ReactComponent as LogoFull } from '../../../../assets/icons/logo_full.svg';
+
+import { AiFillGithub as GithubIcon } from 'react-icons/ai';
 
 import logoLarge from '../../../assets/icons/logo_full.svg';
 import logoSmall from '../../../assets/icons/logo_simple.svg';
@@ -141,14 +148,39 @@ const Sidebar = (props: ISidebarProps) => {
             <Box marginTop="auto" borderY="1px solid #fff" w="100%">
                 <SummaryModalBtn navSize={navSize} />
             </Box>
-            <Text
-                marginY={5}
-                color={'white'}
-                px={2}
-                fontSize={navSize === 'small' ? 'small' : '1xl'}
-            >
-                Copyright Aivirth &copy;{new Date().getFullYear()}
-            </Text>
+
+            <Box paddingY={4} px="15%" width={'100%'}>
+                <Flex
+                    justifyContent={'center'}
+                    background={'#333'}
+                    color={'#fff'}
+                    textAlign={'center'}
+                    alignItems="center"
+                    transition={'all 0.2s cubic-bezier(.08,.52,.52,1)'}
+                    _hover={{
+                        background: '#111',
+                    }}
+                >
+                    <Link
+                        paddingY="10px"
+                        paddingX={navSize === 'small' ? 0 : '20px'}
+                        alignItems={'center'}
+                        display="flex"
+                        justifyContent={'center'}
+                        href="https://github.com/Aivirth/whitelabel_app_previewer"
+                        isExternal
+                        width={'100%'}
+                    >
+                        <Text
+                            mr={navSize === 'small' ? 0 : 5}
+                            display={navSize === 'small' ? 'none' : 'flex'}
+                        >
+                            Github
+                        </Text>
+                        <Icon as={GithubIcon} fontSize={'xl'} color={'white'} />
+                    </Link>
+                </Flex>
+            </Box>
         </Flex>
     );
 };

@@ -35,6 +35,10 @@ export function HexToRGB(hex: string) {
     return false;
 }
 
+export function imageInputInstruction() {
+    return 'Drop your image here or click this area';
+}
+
 type ErrorWithMessage = {
     message: string;
 };

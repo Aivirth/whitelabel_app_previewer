@@ -24,11 +24,11 @@ export const colori: Array<ColorOptions> = [
     },
     {
         store_key: 'tertiary',
-        alias: 'Terziario',
+        alias: 'Tertiary',
     },
     {
         store_key: 'quaternary',
-        alias: 'Quaternario',
+        alias: 'Quaternary',
     },
     {
         store_key: 'success',

@@ -105,7 +105,7 @@ export default function ColorPicker({
                         marginRight={2}
                     >
                         <FormLabel htmlFor={colorPickerId} mb="0">
-                            Anteprima
+                            Preview
                         </FormLabel>
                         <Switch
                             id={colorPickerId}
@@ -124,14 +124,14 @@ export default function ColorPicker({
                             variant="ghost"
                             onClick={cancelColorChange}
                         >
-                            Annulla
+                            Cancel
                         </Button>
                         <Button
                             colorScheme="teal"
                             variant="ghost"
                             onClick={applyColorChange}
                         >
-                            Applica
+                            Apply
                         </Button>
                     </ButtonGroup>
                 </Flex>
@@ -145,7 +145,7 @@ export default function ColorPicker({
                         alignItems={'center'}
                         width={'100%'}
                     >
-                        <Text>Nuovo Colore</Text>
+                        <Text>New Color</Text>
                         <Box
                             height={'50px'}
                             width={'100px'}
@@ -162,7 +162,7 @@ export default function ColorPicker({
                                 background: currentColor,
                             }}
                         />
-                        <Text>Colore Attuale</Text>
+                        <Text>Current Color</Text>
                     </Flex>
                 </Flex>
             </Flex>

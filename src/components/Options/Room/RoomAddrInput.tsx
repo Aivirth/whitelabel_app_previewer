@@ -27,7 +27,7 @@ export default function RoomAddrInput(_props: IRoomAddrInputProps) {
             setError('');
         } else {
             setIsInvalid(true);
-            setError(`Indirizzo troppo breve`);
+            setError(`Address too short`);
         }
     };
 
@@ -36,7 +36,7 @@ export default function RoomAddrInput(_props: IRoomAddrInputProps) {
             handleChange={handleChange}
             error={error}
             inputName={'roomAddr'}
-            optionName={'Indirizzo'}
+            optionName={'Address'}
             isInvalid={isInvalid}
             text={text}
         />

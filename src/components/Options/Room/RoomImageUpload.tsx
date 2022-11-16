@@ -6,6 +6,7 @@ import { State } from '../../../state/reducers/index';
 import ImageUpload from '../ImageUpload';
 import { Box } from '@chakra-ui/react';
 import OptionName from '../Layout/OptionName';
+import { imageInputInstruction } from '../../../utils/utils';
 
 type Props = {};
 
@@ -20,12 +21,12 @@ function RoomImageUpload(_props: Props) {
 
     return (
         <Box mb={6}>
-            <OptionName text={'Immagine'} />
+            <OptionName text={'Picture'} />
             <ImageUpload
                 inputName={'roomImage'}
                 reduxStateElement={image}
                 reduxDispatcher={updateRoomImage}
-                caption="Trascina qui la tua immagine o clicca questa area"
+                caption={imageInputInstruction()}
             />
         </Box>
     );

@@ -36,7 +36,7 @@ function SummaryModalBtn({ navSize }: ISummaryModalBtnProps) {
                         mr={5}
                         display={navSize === 'small' ? 'none' : 'flex'}
                     >
-                        Riepilogo
+                        Summary
                     </Text>
                     <Icon as={BsClipboardData} fontSize={'xl'} color={'teal'} />
                 </Button>
@@ -44,7 +44,7 @@ function SummaryModalBtn({ navSize }: ISummaryModalBtnProps) {
             <Modal isOpen={isOpen} onClose={onClose} size="5xl">
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader textAlign={'center'}>Riepilogo</ModalHeader>
+                    <ModalHeader textAlign={'center'}>Summary</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <Summary />

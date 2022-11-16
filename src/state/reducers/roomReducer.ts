@@ -42,7 +42,7 @@ export interface IroomState {
 const initialState: IroomState = {
     roomName: 'Lorem Room 5',
     roomDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-    roomAddr: 'Via Umberto IX, Lorem ipsum dolor est 20093 Genova (GE)',
+    roomAddr: 'Umberto Str IX, Lorem ipsum dolor est 20093 Genova (GE)',
     roomImage:
         'https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
 };

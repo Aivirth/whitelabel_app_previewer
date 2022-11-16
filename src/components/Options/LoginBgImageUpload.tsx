@@ -6,6 +6,7 @@ import { State } from '../../state/reducers/index';
 import ImageUpload from './ImageUpload';
 import { Box } from '@chakra-ui/react';
 import OptionName from './Layout/OptionName';
+import { imageInputInstruction } from '../../utils/utils';
 
 //type Props = {};
 
@@ -25,7 +26,7 @@ function LoginBgImageUpload() {
                 inputName={'loginBgImage'}
                 reduxStateElement={image}
                 reduxDispatcher={updateLoginBgImage}
-                caption="Trascina qui la tua immagine o clicca questa area"
+                caption={imageInputInstruction()}
             />
         </Box>
     );

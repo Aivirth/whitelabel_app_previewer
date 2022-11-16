@@ -10,6 +10,7 @@ import {
     FormLabel,
 } from '@chakra-ui/react';
 import { AiOutlineUpload } from 'react-icons/ai';
+import { imageInputInstruction } from '../../utils/utils';
 
 interface IImageUploadProps {
     inputName: string;
@@ -185,7 +186,7 @@ function ImageUpload(props: IImageUploadProps) {
                             >
                                 {props.caption
                                     ? props.caption
-                                    : 'Trascina qui il tuo logo o clicca questa area'}
+                                    : imageInputInstruction()}
                             </Text>
                         </Flex>
                     )}

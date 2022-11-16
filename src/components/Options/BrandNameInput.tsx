@@ -38,10 +38,10 @@ export default function BrandNameInput(): JSX.Element {
 
     return (
         <Box mb={6}>
-            <OptionName text={'Nome App'} />
+            <OptionName text={'App Name'} />
             <ChakraInput
                 variant="outline"
-                placeholder="Nome App"
+                placeholder="App Name"
                 focusBorderColor="green.500"
                 errorBorderColor="red.800"
                 isInvalid={isInvalid}

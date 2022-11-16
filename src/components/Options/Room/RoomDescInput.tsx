@@ -27,7 +27,7 @@ export default function RoomDescInput(_props: IRoomDescInputProps) {
             setError('');
         } else {
             setIsInvalid(true);
-            setError(`Descrizione troppo breve`);
+            setError(`Description too short`);
         }
     };
 
@@ -36,7 +36,7 @@ export default function RoomDescInput(_props: IRoomDescInputProps) {
             handleChange={handleChange}
             error={error}
             inputName={'roomDesc'}
-            optionName={'Descrizione Camera'}
+            optionName={'Room Description'}
             isInvalid={isInvalid}
             text={text}
             isTextarea={true}
