@@ -61,7 +61,7 @@ function Summary() {
         <Table variant="simple" size="lg">
             <Thead>
                 <Tr>
-                    <Th>Colore</Th>
+                    <Th>Color</Th>
                     <Th textAlign={'center'}>Hex</Th>
                     <Th textAlign={'center'}>RGB</Th>
                     <Th textAlign={'center'}>Preview</Th>

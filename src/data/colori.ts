@@ -32,11 +32,11 @@ export const colori: Array<ColorOptions> = [
     },
     {
         store_key: 'success',
-        alias: 'Successo',
+        alias: 'Success',
     },
     {
         store_key: 'danger',
-        alias: 'Errore',
+        alias: 'Error',
     },
     {
         store_key: 'bottom_menu_1',
