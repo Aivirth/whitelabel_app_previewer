@@ -28,7 +28,9 @@ export default function BrandNameInput(): JSX.Element {
             setError('');
         } else {
             setIsInvalid(true);
-            setError(`Numero di caratteri massimo 30/${whitelabelName.length}`);
+            setError(
+                `Maximum number of characters 30/${whitelabelName.length}`,
+            );
         }
     };
 

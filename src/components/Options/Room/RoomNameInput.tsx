@@ -28,7 +28,7 @@ export default function RoomNameInput(_props: IRoomNameInputProps) {
             setError('');
         } else {
             setIsInvalid(true);
-            setError(`Inserire un nome valido`);
+            setError(`Insert a valid name`);
         }
     };
 

@@ -3,26 +3,20 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Todo features
-- [ ] Convert Project to english
+- [x] Convert Project to english
 - [ ] Add multilanguage support
 - [ ] Change layout of every page
 - [ ] Improve responsive design of application
-- [ ] Inserire istruzioni per utenti nella tab `Istruzioni`
-- [ ] Collegare `Apartment.tsx` ad altre sezioni dello store per avere una preview migliore
-- [x] Creare pagina `Pin`
+- [ ] Add small overview in home
 - [ ] Add dark mode toggle
-- [ ] Replace *light* color variants with dark mode specific colors
-- [ ] Replace page *Preview Concierge* with Hotel Overview
-- [ ] Add QRCode generation to allow quick saving of color presets
-- [ ] Add QRCode parsing to allow quick loading of color presets
+- [X] Replace *light* color variants with dark mode specific colors
+- [X] Add QRCode generation to allow quick saving of color presets
+- [X] Add QRCode parsing to allow quick loading of color presets
 
-## Todo Ottimizzazioni
-- [x] ~~Migliorare gestione color picker (debouncer o cambio logica con conferma colore)~~
+## Todo Optimizations
 - [ ] Replace Sidebar with a more fluid version
-- [ ] Clean up modules
+- [X] Clean up modules
 
-## Deploy to netlify
-(Coming soon)
 
 ## Available Scripts
 
